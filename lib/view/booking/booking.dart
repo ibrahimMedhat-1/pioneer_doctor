@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Booking extends StatelessWidget {
+  const Booking({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -8,7 +10,7 @@ class Booking extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.blue,
           centerTitle: true,
-          title: Text(
+          title: const Text(
               style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               'د / شاهر ابوحلقان'),
         ),
@@ -26,13 +28,13 @@ class Booking extends StatelessWidget {
                     print(value);
                   },
                   decoration: InputDecoration(
-                    hintStyle:TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold),
+                    hintStyle:const TextStyle(color: Colors.black,fontSize: 18,fontWeight: FontWeight.bold),
                       hintText: 'البحث',
-                      prefixIcon: Icon(
+                      prefixIcon: const Icon(
                         Icons.search,
                         color: Colors.black,
                       ),
-                      focusedBorder: OutlineInputBorder(
+                      focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Colors.blue),
                       ),
                       border: OutlineInputBorder(
@@ -41,16 +43,16 @@ class Booking extends StatelessWidget {
                 Center(
                     child: Column(children: <Widget>[
                       Container(
-                        margin: EdgeInsets.all(20),
+                        margin: const EdgeInsets.all(20),
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Table(
-                            defaultColumnWidth: FixedColumnWidth(300.0),
+                            defaultColumnWidth: const FixedColumnWidth(300.0),
                             border: TableBorder.all(
                                 color: Colors.black,
                                 style: BorderStyle.solid,
                                 width: 2),
-                            children: [
+                            children: const [
                               TableRow( children: [
                                 Column(children:[Text('المبلغ', style: TextStyle(fontSize: 22.0,fontWeight: FontWeight.bold))]),
                                 Column(children:[Text('الاسم', style: TextStyle(fontSize: 22.0,fontWeight: FontWeight.bold))]),
@@ -75,13 +77,13 @@ class Booking extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           ElevatedButton(onPressed: (){},
-                              child: Text(
+                              child: const Text(
                                 style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
                                 'النسبه الكليه'
                               )),
-                          SizedBox(width: 50,),
+                          const SizedBox(width: 50,),
                           ElevatedButton(onPressed: (){},
-                              child: Text(
+                              child: const Text(
                                   style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
                                 'نسبتي'
                               )),

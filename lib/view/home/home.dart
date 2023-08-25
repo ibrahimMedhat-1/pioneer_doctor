@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:pioneer_doctor/booking/booking.dart';
 
+import '../booking/booking.dart';
 import '../daily_report/daily_report.dart';
 import '../expenses/expenses.dart';
 import '../fixtures/fixtures.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.blue,
-          title: Text(
-              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-              'Home Page'),
+          title: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'Home Page'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -21,12 +21,11 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50.0)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(50.0)),
                   clipBehavior: Clip.antiAliasWithSaveLayer,
-                  child: Image(image: AssetImage('assits/pioneer.jpg')),
+                  child: const Image(image: AssetImage('assits/pioneer.jpg')),
                 ),
-                SizedBox(height: 40),
+                const SizedBox(height: 40),
                 Row(
                   children: [
                     Expanded(
@@ -38,9 +37,9 @@ class HomeScreen extends StatelessWidget {
                         ),
                         child: MaterialButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (builder) => DailyReport()));
+                            Navigator.push(context, MaterialPageRoute(builder: (builder) => const DailyReport()));
                           },
-                          child: Row(
+                          child: const Row(
                             children: [
                               Expanded(
                                 child: Center(
@@ -58,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: 15),
+                    const SizedBox(width: 15),
                     Expanded(
                       child: Container(
                         height: 70,
@@ -68,17 +67,14 @@ class HomeScreen extends StatelessWidget {
                         ),
                         child: MaterialButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (builder) => Booking()));
+                            Navigator.push(context, MaterialPageRoute(builder: (builder) => const Booking()));
                           },
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Expanded(
                                 child: Center(
-                                  child: Text(style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 23), 'المواعيد'),
+                                  child: Text(style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 23), 'المواعيد'),
                                 ),
                               ),
                             ],
@@ -88,7 +84,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Row(
                   children: [
                     Expanded(
@@ -100,9 +96,9 @@ class HomeScreen extends StatelessWidget {
                         ),
                         child: MaterialButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (builder) => Expenses()));
+                            Navigator.push(context, MaterialPageRoute(builder: (builder) => const Expenses()));
                           },
-                          child: Row(
+                          child: const Row(
                             children: [
                               Expanded(
                                 child: Center(
@@ -120,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: 15),
+                    const SizedBox(width: 15),
                     Expanded(
                       child: Container(
                         height: 70,
@@ -130,17 +126,14 @@ class HomeScreen extends StatelessWidget {
                         ),
                         child: MaterialButton(
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (builder) => Fixtures()));
+                            Navigator.push(context, MaterialPageRoute(builder: (builder) => const Fixtures()));
                           },
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Expanded(
                                 child: Center(
-                                  child: Text(style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 23), 'التركيبات '),
+                                  child: Text(style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 23), 'التركيبات '),
                                 ),
                               ),
                             ],

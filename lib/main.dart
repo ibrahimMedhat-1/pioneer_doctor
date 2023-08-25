@@ -1,11 +1,16 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:pioneer_doctor/view/login/login.dart';
 
-import 'login/login.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(
-      MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: LoginScreen(),
-      ));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: LoginScreen(),
+  ));
 }
