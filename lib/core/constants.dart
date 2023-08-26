@@ -1,2 +1,2 @@
 String? drName;
-bool isFormer = false;
+bool isFounder = false;

@@ -45,4 +45,16 @@ class ExpensesCubit extends Cubit<ExpensesState> {
       emit(GetAllExpensesSuccessfully());
     }
   }
+
+  void totalAmount(context) {
+    double totalAmountVar = 0.0;
+    expenses.forEach((element) {
+      totalAmountVar += int.parse(element.price!).toDouble();
+    });
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              content: Text("النسبه الكليه : ${totalAmountVar.toString()}"),
+            ));
+  }
 }

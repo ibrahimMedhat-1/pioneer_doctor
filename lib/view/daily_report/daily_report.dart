@@ -50,7 +50,11 @@ class DailyReport extends StatelessWidget {
                           ),
                         ),
                       ),
-                      ElevatedButton(onPressed: () {}, child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'الدخل الكلي')),
+                      ElevatedButton(
+                          onPressed: () {
+                            cubit.totalAmount(context);
+                          },
+                          child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'الدخل الكلي')),
                     ]))
                   ]))));
         },

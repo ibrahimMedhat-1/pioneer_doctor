@@ -55,11 +55,18 @@ class Booking extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ElevatedButton(
-                                onPressed: () {}, child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'النسبه الكليه')),
+                                onPressed: () {
+                                  cubit.totalAmount(context);
+                                },
+                                child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'النسبه الكليه')),
                             const SizedBox(
                               width: 50,
                             ),
-                            ElevatedButton(onPressed: () {}, child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'نسبتي')),
+                            ElevatedButton(
+                                onPressed: () {
+                                  cubit.myAmount(context);
+                                },
+                                child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'نسبتي')),
                           ],
                         )
                       ])),

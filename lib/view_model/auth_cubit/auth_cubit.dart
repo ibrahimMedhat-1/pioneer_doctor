@@ -26,7 +26,7 @@ class AuthCubit extends Cubit<AuthState> {
         if (value.data()!['type'] == 'founder' || value.data()!['type'] == 'worker') {
           ///["د/ محمد وحيد ", "د/ محمد خالد القاضي", "د/ حسام ابو الحلقان", "د/ لمياء خليفة", "د/ هبة ممدوح"]
           if (value.data()!['type'] == 'founder') {
-            isFormer = true;
+            isFounder = true;
           }
           drName = value.data()!['name'];
           Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) => const HomeScreen()));

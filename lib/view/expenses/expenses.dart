@@ -54,7 +54,10 @@ class Expenses extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           ElevatedButton(
-                              onPressed: () {}, child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'اجمالي المصروفات')),
+                              onPressed: () {
+                                cubit.totalAmount(context);
+                              },
+                              child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'اجمالي المصروفات')),
                         ],
                       )
                     ]))

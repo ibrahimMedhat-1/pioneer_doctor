@@ -44,4 +44,33 @@ class BookingCubit extends Cubit<BookingState> {
       emit(GetAllPatientsSuccessfully());
     }
   }
+
+  void totalAmount(context) {
+    double totalAmountVar = 0.0;
+    patients.forEach((element) {
+      totalAmountVar += element.price!.toDouble();
+    });
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              content: Text("النسبه الكليه : ${totalAmountVar.toString()}"),
+            ));
+  }
+
+  void myAmount(context) {
+    double totalAmountVar = 0.0;
+    patients.forEach((element) {
+      totalAmountVar += element.price!.toDouble();
+    });
+    if (isFounder) {
+      totalAmountVar *= 0.50;
+    } else {
+      totalAmountVar *= 0.35;
+    }
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              content: Text("النسبه الكليه : ${totalAmountVar.toString()}"),
+            ));
+  }
 }
