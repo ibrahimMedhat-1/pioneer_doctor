@@ -10,7 +10,11 @@ class DailyReport extends StatelessWidget {
     return BlocProvider(
       create: (context) => DailyReportCubit()..getAllDates(),
       child: BlocConsumer<DailyReportCubit, DailyReportState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state == DeleteAllPatients) {
+            DailyReportCubit.get(context).getAllDates();
+          }
+        },
         builder: (context, state) {
           DailyReportCubit cubit = DailyReportCubit.get(context);
           return Scaffold(
@@ -55,6 +59,14 @@ class DailyReport extends StatelessWidget {
                             cubit.totalAmount(context);
                           },
                           child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'الدخل الكلي')),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      ElevatedButton(
+                          onPressed: () {
+                            cubit.deleteTable(context);
+                          },
+                          child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'حذف الجدول')),
                     ]))
                   ]))));
         },

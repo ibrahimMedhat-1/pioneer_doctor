@@ -57,4 +57,56 @@ class DailyReportCubit extends Cubit<DailyReportState> {
               content: Text("النسبه الكليه : ${totalAmountVar.toString()}"),
             ));
   }
+
+  void delete(context) {
+    FirebaseFirestore.instance.collection('allDatesDoctor').get().then((value) {
+      value.docs.forEach((element) {
+        element.reference.delete();
+        tableRows = [
+          const TableRow(children: [
+            Column(children: [Text('الدكتور', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
+            Column(children: [Text('المبلغ', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
+            Column(children: [Text('الاسم', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
+          ]),
+        ];
+        emit(DeleteAllPatients());
+      });
+    });
+  }
+
+  void deleteTable(context) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text('حذف الجدول'),
+              content: Text('هل انت متاكد ؟ '),
+              actions: [
+                Row(
+                  children: [
+                    Expanded(
+                        child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        delete(context);
+                      },
+                      child: Text(
+                        'نعم',
+                        style: TextStyle(color: Colors.green),
+                      ),
+                    )),
+                    Expanded(
+                        child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        'لا',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    )),
+                  ],
+                )
+              ],
+            ));
+  }
 }
