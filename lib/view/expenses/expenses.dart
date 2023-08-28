@@ -59,7 +59,18 @@ class Expenses extends StatelessWidget {
                               },
                               child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'اجمالي المصروفات')),
                         ],
-                      )
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                              onPressed: () {
+                                cubit.deleteTable(context);
+                              },
+                              child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'حذف الجدول')),
+                        ],
+                      ),
                     ]))
                   ]))));
         },

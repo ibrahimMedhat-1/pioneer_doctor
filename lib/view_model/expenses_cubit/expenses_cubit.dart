@@ -19,13 +19,65 @@ class ExpensesCubit extends Cubit<ExpensesState> {
   ];
 
   void getAllExpenses() {
-    FirebaseFirestore.instance.collection('Expenses').orderBy('date', descending: true).get().then((value) {
+    FirebaseFirestore.instance.collection('ExpensesDoctor').orderBy('date', descending: true).get().then((value) {
       for (var element in value.docs) {
         expenses.add(ExpensesModel.fromJson(element.data()));
         setTable();
         emit(GetAllExpensesSuccessfully());
       }
     }).catchError((onError) {});
+  }
+
+  void delete(context) {
+    FirebaseFirestore.instance.collection('ExpensesDoctor').get().then((value) {
+      value.docs.forEach((element) {
+        element.reference.delete();
+        tableRows = [
+          const TableRow(children: [
+            Column(children: [Text('التاريخ', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
+            Column(children: [Text('المبلغ', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
+            Column(children: [Text('المصروفات', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
+          ]),
+        ];
+        emit(DeleteAllExpenses());
+      });
+    });
+  }
+
+  void deleteTable(context) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text('حذف الجدول'),
+              content: Text('هل انت متاكد ؟ '),
+              actions: [
+                Row(
+                  children: [
+                    Expanded(
+                        child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        delete(context);
+                      },
+                      child: const Text(
+                        'نعم',
+                        style: TextStyle(color: Colors.green),
+                      ),
+                    )),
+                    Expanded(
+                        child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text(
+                        'لا',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    )),
+                  ],
+                )
+              ],
+            ));
   }
 
   void setTable() {

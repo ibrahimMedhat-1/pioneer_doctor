@@ -6,3 +6,5 @@ abstract class ExpensesState {}
 class ExpensesInitial extends ExpensesState {}
 
 class GetAllExpensesSuccessfully extends ExpensesState {}
+
+class DeleteAllExpenses extends ExpensesState {}
