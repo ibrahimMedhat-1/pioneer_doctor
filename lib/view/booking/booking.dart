@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pioneer_doctor/view_model/booking_cubit/booking_cubit.dart';
 
+import '../../core/constants.dart';
+
 class Booking extends StatelessWidget {
   const Booking({super.key});
 
@@ -17,7 +19,7 @@ class Booking extends StatelessWidget {
               appBar: AppBar(
                 backgroundColor: Colors.blue,
                 centerTitle: true,
-                title: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'د / شاهر ابوحلقان'),
+                title: Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), drName.toString()),
               ),
               body: Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -68,7 +70,13 @@ class Booking extends StatelessWidget {
                                 },
                                 child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'نسبتي')),
                           ],
-                        )
+                        ),
+                        const SizedBox(height: 20),
+                        ElevatedButton(
+                            onPressed: () {
+                              cubit.deleteTable(context);
+                            },
+                            child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'حذف الجدول')),
                       ])),
                     ],
                   ),

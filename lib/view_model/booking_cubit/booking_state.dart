@@ -6,3 +6,5 @@ abstract class BookingState {}
 class BookingInitial extends BookingState {}
 
 class GetAllPatientsSuccessfully extends BookingState {}
+
+class DeleteAllPatients extends BookingState {}
