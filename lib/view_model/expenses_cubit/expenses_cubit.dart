@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firedart/firestore/firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,9 +19,9 @@ class ExpensesCubit extends Cubit<ExpensesState> {
   ];
 
   void getAllExpenses() {
-    FirebaseFirestore.instance.collection('ExpensesDoctor').orderBy('date', descending: true).get().then((value) {
-      for (var element in value.docs) {
-        expenses.add(ExpensesModel.fromJson(element.data()));
+     Firestore.instance.collection('ExpensesDoctor').orderBy('date', descending: true).get().then((value) {
+      for (var element in value) {
+        expenses.add(ExpensesModel.fromJson(element.map));
         setTable();
         emit(GetAllExpensesSuccessfully());
       }
@@ -29,8 +29,8 @@ class ExpensesCubit extends Cubit<ExpensesState> {
   }
 
   void delete(context) {
-    FirebaseFirestore.instance.collection('ExpensesDoctor').get().then((value) {
-      value.docs.forEach((element) {
+    Firestore.instance.collection('ExpensesDoctor').get().then((value) {
+      value.forEach((element) {
         element.reference.delete();
         tableRows = [
           const TableRow(children: [
