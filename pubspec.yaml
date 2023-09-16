@@ -28,9 +28,9 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  firebase_core:
   firedart:
-  firebase_auth_desktop:
+  firebase_dart:
+  firebase_dart_flutter:
   flutter_bloc:
   flutter:
     sdk: flutter

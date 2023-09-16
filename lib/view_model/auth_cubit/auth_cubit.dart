@@ -1,9 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_dart/auth.dart';
 import 'package:firedart/firestore/firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pioneer_doctor/core/constants.dart';
-
 import '../../view/home/home.dart';
 
 part 'auth_state.dart';
@@ -21,7 +20,7 @@ class AuthCubit extends Cubit<AuthState> {
   }) {
     isLoading = true;
     emit(ChangeStateToLoading());
-    FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password).then((value) {
+    FirebaseAuth.instance.signInWithEmailAndPassword(email:  email,password:  password).then((value) {
       Firestore.instance.collection('login').document(email).get().then((value) {
         if (value['type'] == 'founder' || value['type'] == 'worker') {
           ///["د/ محمد وحيد ", "د/ محمد خالد القاضي", "د/ حسام ابو الحلقان", "د/ لمياء خليفة", "د/ هبة ممدوح"]
