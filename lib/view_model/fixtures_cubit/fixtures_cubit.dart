@@ -43,7 +43,7 @@ class FixturesCubit extends Cubit<FixturesState> {
     ];
     for (var element in fixtures) {
       tableRows.add(TableRow(children: [
-        Column(children: [Text(element.drName.toString(), style: const TextStyle(fontSize: 20.0))]),
+        Column(children: [Text(element.price.toString(), style: const TextStyle(fontSize: 20.0))]),
         Column(children: [Text(element.labName.toString(), style: const TextStyle(fontSize: 20.0))]),
         Column(children: [Text(element.receiveDate.toString(), style: const TextStyle(fontSize: 20.0))]),
         Column(children: [Text(element.printDate.toString(), style: const TextStyle(fontSize: 20.0))]),

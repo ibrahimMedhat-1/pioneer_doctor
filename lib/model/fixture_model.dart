@@ -5,12 +5,14 @@ class FixtureModel {
   String? labName;
   String? drName;
 
+  int? price;
   FixtureModel({
     required this.patientName,
     required this.printDate,
     required this.receiveDate,
     required this.labName,
     required this.drName,
+    required this.price,
   });
 
   FixtureModel.fromJson(Map<String, dynamic>? json) {
@@ -19,5 +21,6 @@ class FixtureModel {
     receiveDate = json['receiveDate'];
     labName = json['labName'];
     drName = json['drName'];
+    price = json['price'];
   }
 }

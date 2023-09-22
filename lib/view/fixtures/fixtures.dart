@@ -23,7 +23,7 @@ class Fixtures extends StatelessWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: SingleChildScrollView(
                       child: Column(children: [
-                        Center(
+                    Center(
                         child: Column(children: <Widget>[
                       Container(
                         margin: const EdgeInsets.all(20),

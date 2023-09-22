@@ -23,6 +23,11 @@ class DailyReportCubit extends Cubit<DailyReportState> {
   int hossam = 0;
   int heba = 0;
   int lamiaa = 0;
+  int waheedPercentage = 0;
+  int qadiPercentage = 0;
+  int hossamPercentage = 0;
+  int hebaPercentage = 0;
+  int lamiaaPercentage = 0;
 
   void getAllDates() {
     FirebaseFirestore.instance.collection('allDatesDoctor').orderBy('date', descending: true).get().then((value) {
@@ -166,6 +171,43 @@ class DailyReportCubit extends Cubit<DailyReportState> {
   void getAmountDates() {
     FirebaseFirestore.instance.collection('doctors').get().then((value) {
       for (var element in value.docs) {
+        if (element.data()['drName'] == "د حسام ابو الحلقان") {
+          print(element.data()['drName']);
+          hossam += int.parse(element.data()['price'].toString());
+
+          patients.add(PatientModel.fromJson(element.data()));
+          setTable();
+          emit(GetAllPatientsSuccessfully());
+        } else if (element.data()['drName'] == "د محمد وحيد ") {
+          print(element.data()['drName']);
+          waheed += int.parse(element.data()['price'].toString());
+
+          patients.add(PatientModel.fromJson(element.data()));
+          setTable();
+          emit(GetAllPatientsSuccessfully());
+        } else if (element.data()['drName'] == "د محمد خالد القاضي") {
+          print(element.data()['drName']);
+          qadi += int.parse(element.data()['price'].toString());
+
+          patients.add(PatientModel.fromJson(element.data()));
+          setTable();
+          emit(GetAllPatientsSuccessfully());
+        } else if (element.data()['drName'] == "د هبة ممدوح") {
+          print(element.data()['drName']);
+          heba += int.parse(element.data()['price'].toString());
+
+          patients.add(PatientModel.fromJson(element.data()));
+          setTable();
+          emit(GetAllPatientsSuccessfully());
+        } else if (element.data()['drName'] == "د لمياء خليفة") {
+          print(element.data()['drName']);
+          print(int.parse(element.data()['price'].toString()));
+          lamiaa += int.parse(element.data()['price'].toString());
+          print(lamiaa);
+          patients.add(PatientModel.fromJson(element.data()));
+          setTable();
+          emit(GetAllPatientsSuccessfully());
+        }
         amountPatients.add(PatientModel.fromJson(element.data()));
         emit(GetAllPatientsSuccessfully());
       }
