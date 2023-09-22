@@ -26,20 +26,6 @@ class Booking extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      TextFormField(
-                        keyboardType: TextInputType.text,
-                        decoration: InputDecoration(
-                            hintStyle: const TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.bold),
-                            hintText: 'البحث',
-                            prefixIcon: const Icon(
-                              Icons.search,
-                              color: Colors.black,
-                            ),
-                            focusedBorder: const OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.blue),
-                            ),
-                            border: OutlineInputBorder(borderRadius: BorderRadius.circular(20))),
-                      ),
                       Center(
                           child: Column(children: <Widget>[
                         Container(
