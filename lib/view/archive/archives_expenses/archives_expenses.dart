@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pioneer/view_model/archives_expenses_cubit/archives_expenses_cubit.dart';
+
+import '../archives_expenses_cubit/archives_expenses_cubit.dart';
 
 class ArchiveExpenses extends StatelessWidget {
   const ArchiveExpenses({super.key});

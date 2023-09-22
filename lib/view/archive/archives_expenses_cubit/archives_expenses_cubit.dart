@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../model/expenses_model.dart';
+import '../../../model/expenses_model.dart';
 
 part 'archives_expenses_state.dart';
 

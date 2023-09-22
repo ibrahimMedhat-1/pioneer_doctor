@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../model/fixture_model.dart';
+import '../../../model/fixture_model.dart';
 
 part 'archive_fixtures_state.dart';
 

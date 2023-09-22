@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pioneer_doctor/archive/archives/archives.dart';
 
 import '../../core/constants.dart';
+import '../archive/archives/archives.dart';
 import '../booking/booking.dart';
 import '../daily_report/daily_report.dart';
 import '../expenses/expenses.dart';

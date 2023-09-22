@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pioneer/view_model/archive_daily_cubit/archive_daily_cubit.dart';
+
+import '../archive_daily_cubit/archive_daily_cubit.dart';
 
 class ArchivesDaily extends StatelessWidget {
   const ArchivesDaily({super.key});

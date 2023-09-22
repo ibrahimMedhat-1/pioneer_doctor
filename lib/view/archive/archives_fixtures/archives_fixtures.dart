@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pioneer/view_model/archive_fixtures_cubit/archive_fixtures_cubit.dart';
+
+import '../archive_fixtures_cubit/archive_fixtures_cubit.dart';
 
 class ArchivesFixtures extends StatelessWidget {
   const ArchivesFixtures({Key? key}) : super(key: key);
