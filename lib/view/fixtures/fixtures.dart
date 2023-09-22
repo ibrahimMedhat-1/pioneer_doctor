@@ -36,6 +36,27 @@ class Fixtures extends StatelessWidget {
                           ),
                         ),
                       ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                  onPressed: () {
+
+                                  },
+                                  child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'اجمالي التركيبات')),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                  onPressed: () {
+
+                                  },
+                                  child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'حذف الجدول')),
+                            ],
+                          ),
                     ]))
                   ]))));
         },
