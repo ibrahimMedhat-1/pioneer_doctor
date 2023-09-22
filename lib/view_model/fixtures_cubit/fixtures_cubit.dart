@@ -1,4 +1,4 @@
-import 'package:firedart/firestore/firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pioneer_doctor/model/fixture_model.dart';
@@ -22,9 +22,9 @@ class FixturesCubit extends Cubit<FixturesState> {
   ];
 
   void getAllFixtures() {
-    Firestore.instance.collection('doctors').document(drName!).collection('fixtures').orderBy('printDate', descending: true).get().then((value) {
-      for (var element in value) {
-        fixtures.add(FixtureModel.fromJson(element.map));
+    FirebaseFirestore.instance.collection('doctors').doc(drName!).collection('fixtures').orderBy('printDate', descending: true).get().then((value) {
+      for (var element in value.docs) {
+        fixtures.add(FixtureModel.fromJson(element.data()));
         setTable();
         emit(GetAllFixturesSuccessfully());
       }

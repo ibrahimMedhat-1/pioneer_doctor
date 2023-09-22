@@ -1,5 +1,4 @@
-
-import 'package:firedart/firestore/firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pioneer_doctor/core/constants.dart';
@@ -21,9 +20,9 @@ class BookingCubit extends Cubit<BookingState> {
 
   void getAllDates() {
     print(drName);
-    Firestore.instance.collection('doctors').document(drName!).collection('patients').orderBy('date', descending: true).get().then((value) {
-      for (var element in value) {
-        patients.add(PatientModel.fromJson(element.map));
+    FirebaseFirestore.instance.collection('doctors').doc(drName!).collection('patients').orderBy('date', descending: true).get().then((value) {
+      for (var element in value.docs) {
+        patients.add(PatientModel.fromJson(element.data()));
         setTable();
         emit(GetAllPatientsSuccessfully());
       }
@@ -47,8 +46,8 @@ class BookingCubit extends Cubit<BookingState> {
   }
 
   void delete(context) {
-   Firestore.instance.collection('doctors').document(drName!).collection('patients').get().then((value) {
-      value.forEach((element) {
+    FirebaseFirestore.instance.collection('doctors').doc(drName!).collection('patients').get().then((value) {
+      for (var element in value.docs) {
         element.reference.delete();
         tableRows = [
           const TableRow(children: [
@@ -57,7 +56,7 @@ class BookingCubit extends Cubit<BookingState> {
           ]),
         ];
         emit(DeleteAllPatients());
-      });
+      }
     });
   }
 
@@ -99,9 +98,9 @@ class BookingCubit extends Cubit<BookingState> {
 
   void totalAmount(context) {
     double totalAmountVar = 0.0;
-    patients.forEach((element) {
+    for (var element in patients) {
       totalAmountVar += element.price!.toDouble();
-    });
+    }
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -111,9 +110,9 @@ class BookingCubit extends Cubit<BookingState> {
 
   void myAmount(context) {
     double totalAmountVar = 0.0;
-    patients.forEach((element) {
+    for (var element in patients) {
       totalAmountVar += element.price!.toDouble();
-    });
+    }
     if (isFounder) {
       totalAmountVar *= 0.50;
     } else {
