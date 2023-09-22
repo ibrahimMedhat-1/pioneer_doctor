@@ -8,6 +8,7 @@ part 'daily_report_state.dart';
 
 class DailyReportCubit extends Cubit<DailyReportState> {
   DailyReportCubit() : super(DailyReportInitial());
+
   static DailyReportCubit get(context) => BlocProvider.of(context);
   List<PatientModel> patients = [];
   List<TableRow> tableRows = [
@@ -17,13 +18,51 @@ class DailyReportCubit extends Cubit<DailyReportState> {
       Column(children: [Text('الاسم', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
     ]),
   ];
+  int waheed = 0;
+  int qadi = 0;
+  int hossam = 0;
+  int heba = 0;
+  int lamiaa = 0;
 
   void getAllDates() {
     FirebaseFirestore.instance.collection('allDatesDoctor').orderBy('date', descending: true).get().then((value) {
       value.docs.forEach((element) {
-        patients.add(PatientModel.fromJson(element.data()));
-        setTable();
-        emit(GetAllPatientsSuccessfully());
+        if (element.data()['drName'] == "د حسام ابو الحلقان") {
+          print(element.data()['drName']);
+          hossam += int.parse(element.data()['price']);
+
+          patients.add(PatientModel.fromJson(element.data()));
+          setTable();
+          emit(GetAllPatientsSuccessfully());
+        } else if (element.data()['drName'] == "د محمد وحيد ") {
+          print(element.data()['drName']);
+          waheed += int.parse(element.data()['price']);
+
+          patients.add(PatientModel.fromJson(element.data()));
+          setTable();
+          emit(GetAllPatientsSuccessfully());
+        } else if (element.data()['drName'] == "د محمد خالد القاضي") {
+          print(element.data()['drName']);
+          qadi += int.parse(element.data()['price']);
+
+          patients.add(PatientModel.fromJson(element.data()));
+          setTable();
+          emit(GetAllPatientsSuccessfully());
+        } else if (element.data()['drName'] == "د هبة ممدوح") {
+          print(element.data()['drName']);
+          heba += int.parse(element.data()['price']);
+
+          patients.add(PatientModel.fromJson(element.data()));
+          setTable();
+          emit(GetAllPatientsSuccessfully());
+        } else if (element.data()['drName'] == "د لمياء خليفة") {
+          print(element.data()['drName']);
+          lamiaa += int.parse(element.data()['price']);
+
+          patients.add(PatientModel.fromJson(element.data()));
+          setTable();
+          emit(GetAllPatientsSuccessfully());
+        }
       });
     }).catchError((onError) {});
   }
@@ -54,7 +93,16 @@ class DailyReportCubit extends Cubit<DailyReportState> {
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              content: Text("النسبه الكليه : ${totalAmountVar.toString()}"),
+              content: Column(
+                children: [
+                  Text("د حسام ابو الحلقان : $hossam"),
+                  Text("د محمد وحيد : $waheed"),
+                  Text("د محمد خالد القاضي : $qadi"),
+                  Text("د هبة ممدوح : $heba"),
+                  Text("د لمياء خليفه : $heba"),
+                  Text("النسبه الكليه : ${totalAmountVar.toString()}"),
+                ],
+              ),
             ));
   }
 

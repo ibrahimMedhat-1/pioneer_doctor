@@ -135,7 +135,7 @@ class HomeScreen extends StatelessWidget {
                                           fontWeight: FontWeight.bold,
                                           fontSize: 22,
                                         ),
-                                        'التقرير اليومى'),
+                                        'التقرير الشهري'),
                                   ),
                                 ),
                               ],

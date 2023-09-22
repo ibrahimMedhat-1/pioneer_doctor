@@ -21,7 +21,7 @@ class DailyReport extends StatelessWidget {
               appBar: AppBar(
                 backgroundColor: Colors.blue,
                 centerTitle: true,
-                title: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'التقرير اليومي'),
+                title: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'التقرير الشهري'),
               ),
               body: Padding(
                   padding: const EdgeInsets.all(20.0),
