@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pioneer_doctor/archive/archives/archives.dart';
 
 import '../../core/constants.dart';
 import '../booking/booking.dart';
@@ -145,6 +146,34 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+                const SizedBox(height: 30),
+                Container(
+                  height: 70,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.blue,
+                  ),
+                  child: MaterialButton(
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (builder) => const Archives()));
+                    },
+                    child: const Row(
+                      children: [
+                        Expanded(
+                          child: Center(
+                            child: Text(
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 22,
+                                ),
+                                'الارشيف'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
