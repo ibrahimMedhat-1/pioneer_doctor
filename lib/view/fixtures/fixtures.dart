@@ -8,7 +8,7 @@ class Fixtures extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => FixturesCubit()..getAllFixtures(),
+      create: (context) => FixturesCubit()..getAllDoctorFixtures(),
       child: BlocConsumer<FixturesCubit, FixturesState>(
         listener: (context, state) {},
         builder: (context, state) {
@@ -36,27 +36,24 @@ class Fixtures extends StatelessWidget {
                           ),
                         ),
                       ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ElevatedButton(
-                                  onPressed: () {
-
-                                  },
-                                  child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'اجمالي التركيبات')),
-                            ],
-                          ),
-                          const SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ElevatedButton(
-                                  onPressed: () {
-
-                                  },
-                                  child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'حذف الجدول')),
-                            ],
-                          ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                              onPressed: () {
+                                cubit.showTotalFixturesAmount(context);
+                              },
+                              child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'اجمالي التركيبات')),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'حذف الجدول')),
+                        ],
+                      ),
                     ]))
                   ]))));
         },

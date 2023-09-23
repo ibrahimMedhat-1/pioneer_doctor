@@ -108,11 +108,33 @@ class BookingCubit extends Cubit<BookingState> {
             ));
   }
 
-  void myAmount(context) {
+  int allDoctorFixturesAmount = 0;
+  Future<void> getAllDoctorFixtures() async {
+    allDoctorFixturesAmount = 0;
+    await FirebaseFirestore.instance
+        .collection('doctors')
+        .doc(drName!)
+        .collection('fixtures')
+        .orderBy('printDate', descending: true)
+        .get()
+        .then((value) {
+      for (var element in value.docs) {
+        allDoctorFixturesAmount += int.parse(element.data()['price'].toString());
+        // print(allDoctorFixturesAmount);
+      }
+    }).catchError((onError) {});
+  }
+
+  void myAmount(context) async {
+    await getAllDoctorFixtures();
     double totalAmountVar = 0.0;
     for (var element in patients) {
       totalAmountVar += element.price!.toDouble();
     }
+    print(allDoctorFixturesAmount);
+    print(totalAmountVar);
+    totalAmountVar -= allDoctorFixturesAmount;
+    print(totalAmountVar);
     if (isFounder) {
       totalAmountVar *= 0.50;
     } else {

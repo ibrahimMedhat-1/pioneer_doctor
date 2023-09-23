@@ -8,10 +8,10 @@ class DailyReport extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DailyReportCubit()..getAllDates(),
+      create: (context) => DailyReportCubit()..getAllDoctorPrices(),
       child: BlocConsumer<DailyReportCubit, DailyReportState>(
         listener: (context, state) {
-          if (state == DeleteAllPatients) {
+          if (state is DeleteAllPatients) {
             DailyReportCubit.get(context).getAllDates();
           }
         },
@@ -41,8 +41,33 @@ class DailyReport extends StatelessWidget {
                         ),
                       ),
                       ElevatedButton(
-                          onPressed: () {
-                            cubit.totalAmount(context);
+                          onPressed: () async {
+                            await cubit.totalAmount(context).then((value) {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      content: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Text("د حسام ابو الحلقان : ${(cubit.hossam)}"),
+                                          Text(" نسبه د حسام ابو الحلقان : ${(cubit.hossamPercentage)}"),
+                                          Text("د محمد وحيد : ${(cubit.waheed)}"),
+                                          Text("نسبه د محمد وحيد : ${(cubit.waheedPercentage)}"),
+                                          Text("د محمد خالد القاضي : ${(cubit.qadi)}"),
+                                          Text("نسبه د محمد خالد القاضي : ${(cubit.qadiPercentage)}"),
+                                          Text("د هبة ممدوح : ${(cubit.heba)}"),
+                                          Text("نسبه د هبة ممدوح : ${(cubit.hebaPercentage)}"),
+                                          Text("د لمياء خليفه : ${(cubit.lamiaa)}"),
+                                          Text("نسبه د لمياء خليفه : ${(cubit.lamiaaPercentage)}"),
+                                          Text("النسبه الكليه : ${cubit.totalAmountVar.toString()}"),
+                                          Text("الربح : ${cubit.profit.toString()}"),
+                                          // Text("الريح : ${}"),
+                                        ],
+                                      ),
+                                    );
+                                  });
+                            });
                           },
                           child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'الدخل الكلي')),
                       const SizedBox(

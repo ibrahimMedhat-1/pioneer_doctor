@@ -20,15 +20,18 @@ class FixturesCubit extends Cubit<FixturesState> {
       Column(children: [Text('الاسم', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
     ]),
   ];
-
-  void getAllFixtures() {
+  int allDoctorFixturesAmount = 0;
+  int getAllDoctorFixtures() {
     FirebaseFirestore.instance.collection('doctors').doc(drName!).collection('fixtures').orderBy('printDate', descending: true).get().then((value) {
       for (var element in value.docs) {
+        allDoctorFixturesAmount += int.parse(element.data()['price'].toString());
         fixtures.add(FixtureModel.fromJson(element.data()));
         setTable();
         emit(GetAllFixturesSuccessfully());
       }
+      return allDoctorFixturesAmount;
     }).catchError((onError) {});
+    return 0;
   }
 
   void setTable() {
@@ -51,5 +54,13 @@ class FixturesCubit extends Cubit<FixturesState> {
       ]));
       emit(GetAllFixturesSuccessfully());
     }
+  }
+
+  void showTotalFixturesAmount(context) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              content: Text("النسبه الكليه : ${allDoctorFixturesAmount.toString()}"),
+            ));
   }
 }
