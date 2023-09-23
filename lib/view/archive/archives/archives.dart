@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../archives_daily/archives_daily.dart';
+import '../archives_expenses/archives_expenses.dart';
 import '../archives_fixtures/archives_fixtures.dart';
 
 class Archives extends StatelessWidget {
@@ -84,7 +85,7 @@ class Archives extends StatelessWidget {
                       ),
                       child: MaterialButton(
                         onPressed: () {
-                          // Navigator.push(context, MaterialPageRoute(builder: (builder) => const ArchiveExpenses()));
+                          Navigator.push(context, MaterialPageRoute(builder: (builder) => const ArchiveExpenses()));
                         },
                         child: const Row(
                           children: [
