@@ -103,7 +103,7 @@ class DailyReportCubit extends Cubit<DailyReportState> {
     hebaPercentage = (heba - hebaFixtures) * 0.35;
     lamiaaPercentage = (lamiaa - lamiaaFixtures) * 0.35;
     double allPercentages = waheedPercentage + qadiPercentage + hossamPercentage + hebaPercentage + lamiaaPercentage;
-    profit = allExpenses + allPercentages;
+    profit = (allExpenses + allPercentages) - totalAmountVar;
     print(hossam);
     print(waheed);
     print(qadi);
