@@ -43,7 +43,8 @@ class Fixtures extends StatelessWidget {
                               onPressed: () {
                                 cubit.showTotalFixturesAmount(context);
                               },
-                              child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'اجمالي التركيبات')),
+                              child: const Text(
+                                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'اجمالي التركيبات')),
                         ],
                       ),
                       const SizedBox(height: 20),
@@ -51,7 +52,11 @@ class Fixtures extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           ElevatedButton(
-                              onPressed: () {}, child: const Text(style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'حذف الجدول')),
+                              onPressed: () {
+                                cubit.deleteTable(context);
+                              },
+                              child: const Text(
+                                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold), 'حذف الجدول')),
                         ],
                       ),
                     ]))

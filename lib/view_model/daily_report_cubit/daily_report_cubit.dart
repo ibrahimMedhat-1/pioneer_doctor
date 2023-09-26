@@ -209,7 +209,7 @@ class DailyReportCubit extends Cubit<DailyReportState> {
 
   Future<void> getAllExpenses() async {
     allExpenses = 0;
-    await FirebaseFirestore.instance.collection('Expenses').orderBy('date', descending: true).get().then((value) {
+    await FirebaseFirestore.instance.collection('ExpensesDoctor').orderBy('date', descending: true).get().then((value) {
       for (var element in value.docs) {
         allExpenses += int.parse(element.data()['price'].toString());
         emit(GetAllPatientsSuccessfully());
@@ -217,8 +217,6 @@ class DailyReportCubit extends Cubit<DailyReportState> {
     }).catchError((onError) {});
     emit(GetAllPatientsSuccessfully());
   }
-
-  Future<void> getProfit(context) async {}
 
   void delete(context) {
     FirebaseFirestore.instance.collection('allDatesDoctor').get().then((value) {

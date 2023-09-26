@@ -22,7 +22,13 @@ class FixturesCubit extends Cubit<FixturesState> {
   ];
   int allDoctorFixturesAmount = 0;
   int getAllDoctorFixtures() {
-    FirebaseFirestore.instance.collection('doctors').doc(drName!).collection('fixtures').orderBy('printDate', descending: true).get().then((value) {
+    FirebaseFirestore.instance
+        .collection('doctors')
+        .doc(drName!)
+        .collection('fixtures')
+        .orderBy('printDate', descending: true)
+        .get()
+        .then((value) {
       for (var element in value.docs) {
         allDoctorFixturesAmount += int.parse(element.data()['price'].toString());
         fixtures.add(FixtureModel.fromJson(element.data()));
@@ -39,7 +45,8 @@ class FixturesCubit extends Cubit<FixturesState> {
       const TableRow(children: [
         Column(children: [Text('المبلغ', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
         Column(children: [Text('اسم المعمل', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
-        Column(children: [Text('تاريخ استلام التركيبه', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
+        Column(
+            children: [Text('تاريخ استلام التركيبه', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
         Column(children: [Text('تاريخ الطبعه', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
         Column(children: [Text('الاسم', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
       ]),
@@ -61,6 +68,58 @@ class FixturesCubit extends Cubit<FixturesState> {
         context: context,
         builder: (context) => AlertDialog(
               content: Text("النسبه الكليه : ${allDoctorFixturesAmount.toString()}"),
+            ));
+  }
+
+  void delete(context) {
+    FirebaseFirestore.instance.collection('doctors').doc(drName!).collection('fixtures').get().then((value) {
+      value.docs.forEach((element) {
+        element.reference.delete();
+        tableRows = [
+          const TableRow(children: [
+            Column(children: [Text('التاريخ', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
+            Column(children: [Text('المبلغ', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
+            Column(children: [Text('المصروفات', style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold))]),
+          ]),
+        ];
+        emit(DeleteAllFixtures());
+      });
+    });
+  }
+
+  void deleteTable(context) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text('حذف الجدول'),
+              content: Text('هل انت متاكد ؟ '),
+              actions: [
+                Row(
+                  children: [
+                    Expanded(
+                        child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        delete(context);
+                      },
+                      child: const Text(
+                        'نعم',
+                        style: TextStyle(color: Colors.green),
+                      ),
+                    )),
+                    Expanded(
+                        child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text(
+                        'لا',
+                        style: TextStyle(color: Colors.red),
+                      ),
+                    )),
+                  ],
+                )
+              ],
             ));
   }
 }
