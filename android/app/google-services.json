@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "520181459755-hd7g9ag04aam5v79ouftp14mja2m4b1o.apps.googleusercontent.com",
+              "client_id": "520181459755-416phsnprtt5k09hl68bnmppoh5r5hth.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.pioneer"
+                "bundle_id": "com.example.pioneerDoctor"
               }
             }
           ]
@@ -67,10 +67,46 @@
               "client_type": 3
             },
             {
-              "client_id": "520181459755-hd7g9ag04aam5v79ouftp14mja2m4b1o.apps.googleusercontent.com",
+              "client_id": "520181459755-416phsnprtt5k09hl68bnmppoh5r5hth.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.pioneer"
+                "bundle_id": "com.example.pioneerDoctor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:520181459755:android:d66c697da51b943a7df36e",
+        "android_client_info": {
+          "package_name": "com.example.pioneerdoctor.pioneerdoctor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "520181459755-16c7qcoshcu8rflbudqukbaia98vvbrq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxZDR_PXBd25Pomk-yhdnPY7Lm16dFWPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "520181459755-16c7qcoshcu8rflbudqukbaia98vvbrq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "520181459755-416phsnprtt5k09hl68bnmppoh5r5hth.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.pioneerDoctor"
               }
             }
           ]
